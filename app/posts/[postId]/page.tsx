@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
-import { Post } from '@prisma/client';
-import { BASE_URL } from '@/constants';
+import prisma from '@/lib/primsa';
 
 interface PostDetailPageProps {
   params: {
@@ -10,14 +9,24 @@ interface PostDetailPageProps {
 
 export const dynamicParams = true;
 
+const getPost = async (postId: string) => {
+  const post = await prisma.post.findUnique({
+    where: {
+      id: postId,
+    },
+  });
+
+  return post;
+};
+
 const PostDetailPage = async ({ params }: PostDetailPageProps) => {
   const { postId } = params;
 
-  const post: Post = await fetch(`${BASE_URL}/posts/${postId}`, {
-    cache: 'no-store',
-  }).then((res) => res.json());
+  const post = await getPost(postId);
 
-  if (!post) notFound();
+  if (!post) {
+    return notFound();
+  }
 
   return (
     <div>
