@@ -12,3 +12,7 @@ prisma model 작성
 lib/prisma.ts prisma singleton 생성
 
 pnpm add axios @hookform/resolvers react-hook-form zod
+
+pnpm add @supabase/auth-helpers-nextjs
+supabase의 provider에 github client_id, client_secret 추가, callback_url 복사
+callback_url을 github auth의 authorization callback url에 추가

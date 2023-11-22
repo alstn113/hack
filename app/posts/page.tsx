@@ -1,24 +1,13 @@
 import Link from 'next/link';
-import { Post } from '@prisma/client';
-import { BASE_URL } from '@/constants';
+import prisma from '@/lib/primsa';
 
-const fetchPosts = async () => {
-  // const posts: Post[] = await fetch(`${BASE_URL}/posts`, {
-  //   cache: 'no-store',
-  // }).then((res) => res.json());
-
-  const datas: {
-    id: number;
-    title: string;
-  }[] = await fetch('https://jsonplaceholder.typicode.com/todos', {
-    cache: 'no-store',
-  }).then((res) => res.json());
-
-  return datas;
+const getPosts = async () => {
+  const posts = await prisma.post.findMany();
+  return posts;
 };
 
 const PostListPage = async () => {
-  const posts = await fetchPosts();
+  const posts = await getPosts();
 
   return (
     <div>
