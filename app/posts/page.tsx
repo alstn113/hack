@@ -18,6 +18,7 @@ const PostsPage = () => {
           New Post
         </Link>
       </nav>
+      {/* suspense를 하면 ssr안되는 건가? */}
       <Suspense fallback={<Loading />}>
         <PostList />
       </Suspense>

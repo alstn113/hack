@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Hack App',
-  description: 'This is Hacp App',
+  description: 'This is Hack App',
 };
 
 interface RootLayoutProps {
