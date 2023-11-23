@@ -50,14 +50,14 @@ const CreatePostForm = () => {
       <div className="mb-4">
         <label
           htmlFor="title"
-          className="mb-2 block text-sm font-bold text-gray-700"
+          className="block text-sm font-bold text-gray-700"
         >
           Title
         </label>
         <input
           {...form.register('title')}
           id="title"
-          className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+          className="w-full mt-2 p-2 rounded-md border border-gray-300 focus:border-blue-500 focus:outline-none"
         />
         {form.formState.errors.title && (
           <div className="mt-2 text-red-500">
@@ -68,14 +68,14 @@ const CreatePostForm = () => {
       <div className="mb-4">
         <label
           htmlFor="content"
-          className="mb-2 block text-sm font-bold text-gray-700"
+          className="block text-sm font-bold text-gray-700"
         >
           Content
         </label>
-        <input
+        <textarea
           {...form.register('content')}
           id="content"
-          className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+          className="w-full mt-2 p-2 rounded-md border border-gray-300 focus:border-blue-500 focus:outline-none"
         />
         {form.formState.errors.content && (
           <div className="mt-2 text-red-500">
@@ -86,7 +86,7 @@ const CreatePostForm = () => {
       <button
         type="submit"
         disabled={isLoading}
-        className="w-full rounded-md bg-blue-500 px-4 py-2 font-semibold text-white disabled:opacity-50"
+        className="w-full bg-blue-500 p-2 rounded-md text-white font-semibold disabled:opacity-50"
       >
         {isLoading ? 'Loading...' : 'Submit'}
       </button>
